@@ -20,7 +20,6 @@ public class ExerciseDatabaseHelper extends SQLiteOpenHelper {
     public static final String DURATION = "DURATION";
     public static final String INTERVAL = "INTERVAL";
     private final String EXERCISE_TABLE = "EXERCISE_TABLE";
-    private String help ="this isnt working";
 
     // constructor for database
     public ExerciseDatabaseHelper(@Nullable Context context){
