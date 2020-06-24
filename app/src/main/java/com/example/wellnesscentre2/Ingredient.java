@@ -53,7 +53,6 @@ public class Ingredient {
 
     // calculates total calories the ingredient is comprised of.
     public int totalCalories (int caloriesPer100Grams, int quantityInGrams){
-
         int totalCalories = ((caloriesPer100Grams/100)*quantityInGrams);
         return totalCalories;
     }

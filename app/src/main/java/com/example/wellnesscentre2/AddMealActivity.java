@@ -37,9 +37,6 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
     private Meal selectedMeal = new Meal();
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,38 +53,9 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
         // Runs initDate function which will initialise the date text to show current date.
         // This prevents users having to needlessly select current date when quickly adding a new meal
         initDate();
-
-
-
-
-        // Default meal creation to demonstrate meals along with ingredient creation to be used by meals.
-
-        // Default Meal 1
-        Ingredient potatoes = new Ingredient("Champ Potatoes",900,77);
-        Ingredient milk = new Ingredient("Full Fat Milk",150,66);
-        Ingredient springOnion = new Ingredient("Spring Onion", 100, 32);
-        Ingredient butter = new Ingredient("Butter" , 85,717);
-        Ingredient test = new Ingredient("test" , 85,717);
-
-        List<Ingredient> champIngredient = new ArrayList<Ingredient>();
-        champIngredient.add(milk);
-        champIngredient.add(springOnion);
-        champIngredient.add(butter);
-        champIngredient.add(potatoes);
-
-        Meal defaultMeal = new Meal("Champ",champIngredient,txtDatePicker.getText().toString());
-
-
-        //Default Meal 2
-        Ingredient biscuit = new Ingredient("Digestive Biscuit",75,568);
-
-        List<Ingredient> digestiveBiscuitIngredient = new ArrayList<Ingredient>();
-        digestiveBiscuitIngredient.add(biscuit);
-        Meal defaultMeal2 = new Meal("Digestive Biscuit",digestiveBiscuitIngredient,txtDatePicker.getText().toString());
-
-        // Adds meals to meal list
-        mealList.add(defaultMeal);
-        mealList.add(defaultMeal2);
+        // Running the initialiseMeals function to populate the meals drop down with some example
+        // meals
+        initialiseMeals();
 
         // fetched created meals and added them from the database
         MealDatabaseHelper tempMealDbHelper = new MealDatabaseHelper(this);
@@ -97,17 +65,14 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
         // loops through the pulled meals from the database and ensures each unique meal is only added
         // once. This is to prevent the same meal showing over and over again on the spinner dropdown
         for(int i =0;i<tempMeal.size();i++){
-
             for(int y =0;y< mealList.size();y++){
                 if(mealList.get(y).getMealName().equals(tempMeal.get(i).getMealName())){
                     alreadyAdded = true;
                 }
             }
-
             if(!alreadyAdded){
                 mealList.add(tempMeal.get(i));
             }
-
             alreadyAdded = false;
         }
 
@@ -245,5 +210,36 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
 
     }
 
+    // Creates some default meals to help demonstrate use
+    public void initialiseMeals(){
+// Default meal creation to demonstrate meals along with ingredient creation to be used by meals.
+        // Default Meal 1 ingredient creation
+        Ingredient potatoes = new Ingredient("Champ Potatoes",900,77);
+        Ingredient milk = new Ingredient("Full Fat Milk",150,66);
+        Ingredient springOnion = new Ingredient("Spring Onion", 100, 32);
+        Ingredient butter = new Ingredient("Butter" , 85,717);
+        Ingredient test = new Ingredient("test" , 85,717);
+        // Adding ingredients to the list
+        List<Ingredient> champIngredient = new ArrayList<Ingredient>();
+        champIngredient.add(milk);
+        champIngredient.add(springOnion);
+        champIngredient.add(butter);
+        champIngredient.add(potatoes);
+        // Creating the meal
+        Meal defaultMeal = new Meal("Champ",champIngredient,txtDatePicker.getText().toString());
+
+        // Second default meal 2 creation to add a second option.
+        // Default meal 2 ingredient creation
+        Ingredient biscuit = new Ingredient("Digestive Biscuit",75,568);
+        // Adding ingredients to ingredient list
+        List<Ingredient> digestiveBiscuitIngredient = new ArrayList<Ingredient>();
+        digestiveBiscuitIngredient.add(biscuit);
+        // Creating the meal
+        Meal defaultMeal2 = new Meal("Digestive Biscuit",digestiveBiscuitIngredient,txtDatePicker.getText().toString());
+
+        // Adds meals to meal list
+        mealList.add(defaultMeal);
+        mealList.add(defaultMeal2);
+    }
 
 }

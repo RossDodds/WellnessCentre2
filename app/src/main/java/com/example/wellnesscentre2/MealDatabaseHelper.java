@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,9 +25,7 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
     // constructor for the database
     public MealDatabaseHelper(@Nullable Context context){
         super(context, "meal.db", null, 1);
-
     }
-
 
     // creates the database on first launch
     @Override
@@ -40,7 +40,7 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // add meal function used to add meals to the database
-    public boolean addMeal(String mealName, String mealIngredients, String dateOfMeal, int totalCalories){
+    public boolean addMeal(String mealName, String dateOfMeal, String mealIngredients, int totalCalories){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         // assigns content values to the parameters passed in and links them to the field in the database
@@ -58,19 +58,12 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
         }else{
             return true;
         }
-
     }
 
     // returns the meals stored in the database
     public List<Meal> getMeals(){
         // creates a meal list
         List<Meal> dbMealList = new ArrayList<Meal>();
-        // creates an ingredient list that is set to blank
-        List<Ingredient> dbIngredientList = new ArrayList<Ingredient>();
-        Ingredient blankIngredient = new Ingredient("Blank",0,0);
-        // Creates a string with current date and sets the date text to show it
-
-        dbIngredientList.add(blankIngredient);
         // SQL query to select all entries in the database
         String dbQuery = "SELECT * FROM " + MEAL_TABLE;
         // creates a readable connection to the database
@@ -82,14 +75,17 @@ public class MealDatabaseHelper extends SQLiteOpenHelper {
             do{
                 // assigns meal object variables to relevant database column values
                 String dbMealName = cursor.getString(1);
-                int dbTotalCalories = cursor.getInt(2);
-                String dbMealDate = cursor.getString(3);
-                // creates new meal based on above values
+                String dbMealDate = cursor.getString(2);
+                // string holding json array of ingredients
+                String dbMealIngredients = cursor.getString(3);
+                // Gson used to parse json object to ingredient list
+                Gson gson = new Gson();
+                Type type = new TypeToken<List<Ingredient>>(){}.getType();
+                List<Ingredient> dbIngredientList = gson.fromJson(dbMealIngredients.toString(),type);
+                // adds meal with values obtained
                 Meal dbNewMeal = new Meal(dbMealName, dbIngredientList,dbMealDate);
-                // adds the meal to the temporary list
+                // adds the meal to the collection of returned meals
                 dbMealList.add(dbNewMeal);
-
-
             }while(cursor.moveToNext());
         }else{
 
