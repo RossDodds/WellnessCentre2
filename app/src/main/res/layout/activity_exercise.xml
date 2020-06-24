@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#008fcc"
+    tools:context=".ExerciseActivity">
+
+    <TextView
+        android:id="@+id/txtExerciseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="80dp"
+        android:text="Exercise"
+        android:textSize="44dp"
+        android:fontFamily="@font/tcm"
+        />
+
+    <TextView
+        android:id="@+id/txtExerciseTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:text="Exercise Time"
+        android:textSize="44dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtExerciseTitle"
+        />
+    <TextView
+        android:id="@+id/txtRestTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:text="Rest Time"
+        android:textSize="35dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtExerciseTime"
+        />
+    <TextView
+        android:id="@+id/txtSelectExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="65dp"
+        android:paddingTop="10dp"
+        android:text="Select Exercise:"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtRestTime"
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        />
+
+    <Spinner
+        android:id="@+id/spnExercises"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/txtRestTime"
+        android:layout_toRightOf="@+id/txtSelectExercise"
+        />
+
+    <TextView
+    android:id="@+id/txtNumberOfReps"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="65dp"
+    android:paddingTop="10dp"
+    android:text="Number of Reps:"
+    android:textSize="20dp"
+    android:fontFamily="@font/tcm"
+    android:layout_below="@+id/txtSelectExercise"
+    android:gravity="left"
+    android:layout_marginTop="20dp"
+    />
+
+    <TextView
+        android:id="@+id/txtNumberOfRepsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:text="0"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtSelectExercise"
+        android:layout_toRightOf="@+id/txtNumberOfReps"
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txtNumberOfSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="65dp"
+        android:paddingTop="5dp"
+        android:text="Number of Sets:"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtNumberOfReps"
+        android:gravity="left"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtNumberOfSetsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:text="0"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtNumberOfReps"
+        android:layout_toRightOf="@+id/txtNumberOfSets"
+        android:gravity="right"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="65dp"
+        android:paddingTop="5dp"
+        android:text="Duration:"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtNumberOfSets"
+        android:gravity="left"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtDurationValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="15dp"
+        android:text="0"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtNumberOfSets"
+        android:layout_toRightOf="@+id/txtNumberOfSets"
+        android:gravity="right"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:id="@+id/txtDurationSeconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="25dp"
+        android:text="(Seconds)"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtNumberOfSets"
+        android:layout_toRightOf="@+id/txtDurationValue"
+        android:gravity="right"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtInterval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="65dp"
+        android:paddingTop="5dp"
+        android:text="interval:"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtDuration"
+        android:gravity="left"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtIntervalValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="25dp"
+        android:text="0"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtDuration"
+        android:layout_toRightOf="@+id/txtNumberOfSets"
+        android:gravity="right"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtIntervalSeconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingRight="25dp"
+        android:text="(Seconds)"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtDuration"
+        android:layout_toRightOf="@+id/txtDurationValue"
+        android:gravity="right"
+        android:layout_marginTop="5dp"
+        />
+
+    <Button
+        android:id="@+id/btn_startExercise"
+        android:text="Start"
+        android:fontFamily="@font/tcm"
+        android:textSize="20dp"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@+id/txtInterval"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="20dp"
+        android:background="#00FF00"
+        />
+
+
+
+    <Button
+        android:id="@+id/btn_resetExercise"
+        android:text="Reset"
+        android:fontFamily="@font/tcm"
+        android:textSize="20dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/btn_startExercise"
+        android:layout_marginLeft="93dp"
+        android:layout_marginTop="13dp"
+        />
+
+    <Button
+        android:id="@+id/btn_addNewExercise"
+        android:text="Create New"
+        android:fontFamily="@font/tcm"
+        android:textSize="20dp"
+        android:layout_width="100dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/btn_startExercise"
+        android:layout_toRightOf="@+id/btn_resetExercise"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="13dp"
+        />
+
+</RelativeLayout>

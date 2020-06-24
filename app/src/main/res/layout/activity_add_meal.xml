@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#008fcc"
+    tools:context=".AddMealActivity">
+
+    <TextView
+        android:id="@+id/txtAddMealTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Add Meal"
+        android:fontFamily="@font/tcm"
+        android:paddingTop="50dp"
+        android:textSize="40dp"
+        />
+
+
+
+    <TextView
+    android:id="@+id/txtMealName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="55dp"
+    android:paddingTop="10dp"
+    android:text="Meal Name: "
+    android:textSize="30dp"
+    android:fontFamily="@font/tcm"
+    android:layout_below="@+id/txtAddMealTitle"
+    android:gravity="left"
+    android:layout_marginTop="20dp"
+    />
+
+
+
+    <TextView
+        android:id="@+id/txtMealNameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:text="MealName"
+        android:textSize="30dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtAddMealTitle"
+        android:layout_toRightOf="@id/txtMealName"
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txtDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:text="Date"
+        android:textSize="30dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtMealName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txtSelectPastMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="45dp"
+        android:paddingTop="10dp"
+        android:text="Select Past Meal:"
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtDatePicker"
+        android:gravity="left"
+        android:layout_marginTop="20dp"
+        />
+
+    <Spinner
+        android:id="@+id/spnPastMeals"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/txtDatePicker"
+        android:layout_toRightOf="@+id/txtSelectPastMeal"
+
+        />
+
+    <TextView
+        android:id="@+id/txtIngredients"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Ingredients "
+        android:textSize="20dp"
+        android:fontFamily="@font/tcm"
+        android:layout_below="@+id/txtSelectPastMeal"
+        android:layout_centerHorizontal="true"
+        android:gravity="left"
+        android:layout_marginTop="30dp"
+        />
+
+
+    <ListView
+        android:id="@+id/lvIngredientsAddMeal"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/txtIngredients"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:id="@+id/btnAddMeal"
+        android:text="Add Meal"
+        android:fontFamily="@font/tcm"
+        android:textSize="20dp"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@+id/lvIngredientsAddMeal"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/btnNewMeal"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@+id/btnAddMeal"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/tcm"
+        android:text="Create Meal"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+</RelativeLayout>
+
+
+

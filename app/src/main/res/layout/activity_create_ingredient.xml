@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#008fcc"
+    tools:context=".AddMealActivity">
+
+    <TextView
+        android:id="@+id/txtCreateIngredientTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Create Ingredient"
+        android:fontFamily="@font/tcm"
+        android:paddingTop="50dp"
+        android:textSize="40dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_ingredientName"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:hint="Ingredient Name"
+        android:fontFamily="@font/tcm"
+        android:layout_marginTop="60dp"
+        android:textSize="23dp"
+        android:layout_below="@+id/txtCreateIngredientTitle"
+        />
+
+    <EditText
+        android:id="@+id/edit_ingredientQuantity"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:hint="Quantity (g)"
+        android:fontFamily="@font/tcm"
+        android:layout_marginTop="10dp"
+        android:textSize="23dp"
+        android:layout_below="@+id/edit_ingredientName"
+        />
+
+    <EditText
+        android:id="@+id/edit_ingredientCalories"
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:hint="Calories per 100g (kcal)"
+        android:fontFamily="@font/tcm"
+        android:layout_marginTop="10dp"
+        android:textSize="23dp"
+        android:layout_below="@+id/edit_ingredientQuantity"
+        />
+
+
+    <Button
+        android:id="@+id/btnCreateIngredient"
+        android:layout_width="205dp"
+        android:layout_height="68dp"
+        android:layout_below="@+id/edit_ingredientCalories"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/tcm"
+        android:text="Create Ingredient"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>
+
+
+
