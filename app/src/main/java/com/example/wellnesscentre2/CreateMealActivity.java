@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +48,6 @@ public class CreateMealActivity extends AppCompatActivity {
         IngredientDatabaseHelper ingredientDbHelper = new IngredientDatabaseHelper(this);
         ingredientList = ingredientDbHelper.getIngredients();
 
-
         // default ingredient to use when testing. Then added to ingredient list used by class
         Ingredient default1 = new Ingredient("Battered Fish",100,10);
         Ingredient default2 = new Ingredient("Jammie Dodgers",100,10);
@@ -72,12 +71,8 @@ public class CreateMealActivity extends AppCompatActivity {
 
                         }
                     }
-
                 }
-
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                selectedIngredient = ingredientList.get(0);
@@ -139,15 +134,17 @@ public class CreateMealActivity extends AppCompatActivity {
 
     }
 
-    // create meal function, takes a list of ingredients and uses them to create a new meal at a custom date
-    // the date chosen is to hide the meal in the meal database so it wont show when it hasnt actually been eaten
+    // create meal function, takes a list of ingredients and uses them to create a new meal.
+    // the date is set to null as we want to store created meals on the same database tracking consumed meals but not have it
+    // interfere with the statistics
     public void createMeal(List<Ingredient> addedIngredients){
 
-        Meal meal = new Meal(etMealName.getText().toString(),addedIngredients,"01/01/1990",0);
+        Meal meal = new Meal(etMealName.getText().toString(),addedIngredients,"null");
         meal.calculateTotalCalories();
-
         MealDatabaseHelper dbHelper = new MealDatabaseHelper(CreateMealActivity.this);
-        boolean successfullyAdded = dbHelper.addMeal(meal.getMealName(),meal.getTotalCalories(),"01/01/1990");
+        Gson gson = new Gson();
+        String jsonIngredients = gson.toJson(meal.getIngredientList());
+        boolean successfullyAdded = dbHelper.addMeal(meal.getMealName(),meal.getMealDate(),jsonIngredients,meal.getTotalCalories());
         Toast.makeText(this, "Created = " + successfullyAdded, Toast.LENGTH_SHORT).show();
     }
 

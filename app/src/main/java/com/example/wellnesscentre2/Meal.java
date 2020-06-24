@@ -1,5 +1,7 @@
 package com.example.wellnesscentre2;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +14,12 @@ public class Meal {
     private int totalCalories;
 
     // constructor for the meal object
-    public Meal(String mealName, List<Ingredient> ingredientList, String mealDate, int totalCalories) {
+    public Meal(String mealName, List<Ingredient> ingredientList, String mealDate) {
        // initialises meal object with parameters passed in the calling function
         this.mealName = mealName;
         this.ingredientList = ingredientList;
         this.mealDate = mealDate;
-        this.totalCalories = totalCalories;
+        calculateTotalCalories();
     }
 
     // empty constructor
@@ -47,13 +49,13 @@ public class Meal {
 
     // returns total calories
     public int getTotalCalories() {
+
         return totalCalories;
     }
 
     // sets the date the meal was consumed
     public void setMealDate(String mealDate){
         this.mealDate = mealDate;
-
     }
 
     // returns the date the meal was consumed
@@ -64,15 +66,11 @@ public class Meal {
     // calculates the total calories and assigns it to the class variable
     public void calculateTotalCalories() {
         int caloriesSum = 0;
-        if(!(totalCalories == 0)){
-            for(int i = 0; i < ingredientList.size(); i++){
-                caloriesSum += ingredientList.get(i).getCaloriesPer100Grams();
-            }
-        }
 
+            for(int i = 0; i < ingredientList.size(); i++){
+                caloriesSum += ingredientList.get(i).getTotalCalories();
+            }
 
         this.totalCalories = caloriesSum;
-
-
     }
 }

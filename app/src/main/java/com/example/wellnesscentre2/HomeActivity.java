@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -31,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         exerciseBtn = findViewById(R.id.btn_exercise);
         addMealBtn = findViewById(R.id.btn_addMeal);
         txtCaloriesToday = findViewById(R.id.txt_caloriesToday);
-        caloriesBarChart = (BarChart) findViewById(R.id.bar_dailyCalories);
+        caloriesBarChart = findViewById(R.id.bar_dailyCalories);
 
         exerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        // fetched created exercise's
+        // fetch meals on db
         MealDatabaseHelper mealDbHelper = new MealDatabaseHelper(this);
         mealList = mealDbHelper.getMeals();
 
@@ -58,6 +60,8 @@ public class HomeActivity extends AppCompatActivity {
         String date = day + "/" + (month+1) +"/" + year;
         // calculates total calories for current date and displays it
         int totalCalories = 0;
+        String text = "help";
+
         for(int i = 0; i < mealList.size();i++){
 
             if(mealList.get(i).getMealDate().equals(date)){

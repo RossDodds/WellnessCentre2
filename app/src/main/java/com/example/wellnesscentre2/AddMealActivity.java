@@ -17,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -73,7 +75,7 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
         champIngredient.add(butter);
         champIngredient.add(potatoes);
 
-        Meal defaultMeal = new Meal("Champ",champIngredient,txtDatePicker.getText().toString(),0);
+        Meal defaultMeal = new Meal("Champ",champIngredient,txtDatePicker.getText().toString());
 
 
         //Default Meal 2
@@ -81,7 +83,7 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
 
         List<Ingredient> digestiveBiscuitIngredient = new ArrayList<Ingredient>();
         digestiveBiscuitIngredient.add(biscuit);
-        Meal defaultMeal2 = new Meal("Digestive Biscuit",digestiveBiscuitIngredient,txtDatePicker.getText().toString(),0);
+        Meal defaultMeal2 = new Meal("Digestive Biscuit",digestiveBiscuitIngredient,txtDatePicker.getText().toString());
 
         // Adds meals to meal list
         mealList.add(defaultMeal);
@@ -229,8 +231,11 @@ public class AddMealActivity extends AppCompatActivity implements AdapterView.On
     public void addNewMeal(Meal meal){
         meal.calculateTotalCalories();
         MealDatabaseHelper dbHelper = new MealDatabaseHelper(AddMealActivity.this);
-        boolean successfullyAdded = dbHelper.addMeal(meal.getMealName(),meal.getTotalCalories(),txtDatePicker.getText().toString());
+        Gson gson = new Gson();
+        String jsonIngredients = gson.toJson(meal.getIngredientList());
+        boolean successfullyAdded = dbHelper.addMeal(meal.getMealName(),txtDatePicker.getText().toString(),jsonIngredients,meal.getTotalCalories());
         Toast.makeText(this, "Success + " + successfullyAdded, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "total calories = " + meal.getTotalCalories(), Toast.LENGTH_SHORT).show();
     }
 
     // create meal function takes the user to the create meal activity

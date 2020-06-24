@@ -8,11 +8,17 @@ public class Ingredient {
     private int caloriesPer100Grams;
 
 
+
+    private int totalCalories;
+
+
     // constructors for the class. Used when creating a new ingredient
     public Ingredient(String ingredientName, int quantityInGrams, int caloriesPer100Grams) {
         this.ingredientName = ingredientName;
         this.quantityInGrams = quantityInGrams;
         this.caloriesPer100Grams = caloriesPer100Grams;
+        this.totalCalories = totalCalories(caloriesPer100Grams,quantityInGrams);
+
     }
 
     public Ingredient() {
@@ -49,6 +55,11 @@ public class Ingredient {
     public int totalCalories (int caloriesPer100Grams, int quantityInGrams){
 
         int totalCalories = ((caloriesPer100Grams/100)*quantityInGrams);
+        return totalCalories;
+    }
+
+    // returns total calories for this ingredient
+    public int getTotalCalories() {
         return totalCalories;
     }
 }
