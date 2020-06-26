@@ -34,7 +34,6 @@ public class HomeActivity extends AppCompatActivity {
         addMealBtn = findViewById(R.id.btn_addMeal);
         txtCaloriesToday = findViewById(R.id.txt_caloriesToday);
         caloriesBarChart = findViewById(R.id.bar_dailyCalories);
-
         exerciseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
             for(int y = 0; y < mealList.size();y++){
 
                 if(mealList.get(y).getMealDate().equals(weekDays.get(i))){
-                    totalCalories = totalCalories + mealList.get(i).getTotalCalories();
+                    totalCalories = totalCalories + mealList.get(y).getTotalCalories();
                 }
             }
             // stores the total calories for the given date in the array
