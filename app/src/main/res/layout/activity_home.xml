@@ -27,6 +27,7 @@
         android:text="Error"
         android:layout_below="@+id/Title"
         android:textSize="35dp"
+        android:paddingBottom="200px"
         />
 
     <com.github.mikephil.charting.charts.BarChart

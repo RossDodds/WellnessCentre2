@@ -13,6 +13,8 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -109,11 +111,15 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         for(int i =0; i < 7;i++){
             barEntries.add(new BarEntry((float) i,(float) weekdayCalories[i]));
+
         }
         BarDataSet barDataSet = new BarDataSet(barEntries,"Total Calories");
+        String[] weekdaysArray ={"Mon","Tue","Wed","Thur","Fri","Sat","Sun"};
+
         BarData theData = new BarData(barDataSet);
         theData.setBarWidth(0.9f);
         caloriesBarChart.setData(theData);
+        caloriesBarChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(weekdaysArray));
 
     }
 
